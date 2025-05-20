@@ -1,0 +1,261 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "seven_seg_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[7]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[8]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[9]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[10]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[11]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[12]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[13]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[14]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[15]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[16]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[17]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[18]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[19]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[20]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[21]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[22]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[23]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[24]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[25]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[26]",
+					"strict" : false
+				},
+				{
+					"name" : "seven_seg_export[27]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_HS",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_VS",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_BLANK",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[4]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[5]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[6]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_R[7]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[4]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[5]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[6]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_G[7]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[0]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[1]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[2]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[3]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[4]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[5]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[6]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_controller_B[7]",
+					"strict" : false
+				},
+				{
+					"name" : "clk_clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_export_export[2]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_export_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_export_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "switchs_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "switchs_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "switchs_export[2]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
