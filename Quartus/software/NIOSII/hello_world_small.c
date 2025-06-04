@@ -1,0 +1,64 @@
+#include "sys/alt_stdio.h"
+#include <unistd.h>
+
+#define HEX_DISPLAY_BASE 0x4840
+
+// Tu tabla personalizada
+unsigned char hex_table_custom[10] = {
+    0x40, // 0: ya
+    0x79, // 1: ya
+    0x24, // 2: ya
+    0x30, // 3: ya
+    0x19, // 4: ya
+    0x12, // 5: ya
+    0x02, // 6: ya
+    0x78, // 7: ya
+    0x80, // 8: ya
+    0x10  // 9: ya
+};
+
+int main() {
+    volatile unsigned int * hex_display_ptr = (unsigned int *) HEX_DISPLAY_BASE;
+
+    alt_putstr("=== Contador Simple para Probar 7-Segmentos ===\n");
+    alt_putstr("Contando de 0000 a 9999...\n");
+    alt_putstr("Presiona Ctrl+C para detener\n\n");
+
+    unsigned int contador = 0;
+
+    while(1) {
+        // Extraer dígitos individuales
+        int digit0 = contador % 10;           // Unidades (derecha)
+        int digit1 = (contador / 10) % 10;    // Decenas
+        int digit2 = (contador / 100) % 10;   // Centenas
+        int digit3 = (contador / 1000) % 10;  // Miles (izquierda)
+
+        // Construir valor para displays usando tu tabla
+        unsigned int display_value =
+            (hex_table_custom[digit0] & 0x7F) |           // HEX0
+            ((hex_table_custom[digit1] & 0x7F) << 7) |   // HEX1
+            ((hex_table_custom[digit2] & 0x7F) << 14) |  // HEX2
+            ((hex_table_custom[digit3] & 0x7F) << 21);   // HEX3
+
+        // Enviar a displays
+        *hex_display_ptr = display_value;
+
+        // Mostrar en consola para debug
+        alt_printf("Contador: %04d -> Displays: %d%d%d%d\n",
+                  contador, digit3, digit2, digit1, digit0);
+
+        // Incrementar contador
+        contador++;
+
+        // Reiniciar en 10000 (después de 9999)
+        if (contador >= 10000) {
+            contador = 0;
+            alt_putstr("\n*** Reiniciando contador ***\n\n");
+        }
+
+        // Pausa de 1 segundo
+        usleep(1000000);
+    }
+
+    return 0;
+}

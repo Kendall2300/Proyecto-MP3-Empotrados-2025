@@ -1,0 +1,30 @@
+#include "sys/alt_stdio.h"
+#define HEX_DISPLAY_BASE 0x4840
+
+unsigned char hex_tabled[10] = {
+    0x40, // 0: ya
+    0x79, // 1: ya
+    0x24, // 2: ya
+    0x30, // 3: ya
+    0x19, // 4: ya
+    0x12, // 5: ya
+    0x02, // 6: ya
+    0x78, // 7: ya
+    0x80, // 8: ya
+    0x10  // 9: ya
+};
+
+int main()
+{
+    volatile unsigned int * hex_display_ptr = (unsigned int *) HEX_DISPLAY_BASE;
+
+    // Escribir una sola vez con ambos valores
+    *hex_display_ptr = hex_tabled[8] | (hex_tabled[1]<<7) | 
+    				(hex_tabled[2]<<14)| (hex_tabled[1]<<21);
+
+    while(1) {
+        // Mantener displays activos
+    }
+
+    return 0;
+}

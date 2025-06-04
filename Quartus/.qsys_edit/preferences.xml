@@ -9,6 +9,6 @@
   </columns>
  </systemtable>
  <library
-   expandedCategories="Project,Library/Basic Functions/Clocks; PLLs and Resets,Library/Basic Functions,Library,Library/Basic Functions/Clocks; PLLs and Resets/PLL,Library/Interface Protocols,Library/University Program/Clock,Library/Interface Protocols/Transceiver PLL,Library/University Program" />
- <window width="1376" height="784" x="-8" y="-8" />
+   expandedCategories="Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Basic Functions/Simulation; Debug and Verification,Library/Basic Functions/Bridges and Adaptors,Library,Project,Library/Interface Protocols,Library/Interface Protocols/Serial,Library/Basic Functions" />
+ <window width="1360" height="768" x="0" y="0" />
 </preferences>

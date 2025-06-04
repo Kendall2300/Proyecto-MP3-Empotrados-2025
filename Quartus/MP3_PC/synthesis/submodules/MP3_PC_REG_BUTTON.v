@@ -39,22 +39,22 @@ module MP3_PC_REG_BUTTON (
   input   [  1: 0] address;
   input            chipselect;
   input            clk;
-  input   [  2: 0] in_port;
+  input   [  3: 0] in_port;
   input            reset_n;
   input            write_n;
   input   [ 31: 0] writedata;
 
 
 wire             clk_en;
-wire    [  2: 0] data_in;
+wire    [  3: 0] data_in;
 wire             irq;
-reg     [  2: 0] irq_mask;
-wire    [  2: 0] read_mux_out;
+reg     [  3: 0] irq_mask;
+wire    [  3: 0] read_mux_out;
 reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
-  assign read_mux_out = ({3 {(address == 0)}} & data_in) |
-    ({3 {(address == 2)}} & irq_mask);
+  assign read_mux_out = ({4 {(address == 0)}} & data_in) |
+    ({4 {(address == 2)}} & irq_mask);
 
   always @(posedge clk or negedge reset_n)
     begin
@@ -71,7 +71,7 @@ reg     [ 31: 0] readdata;
       if (reset_n == 0)
           irq_mask <= 0;
       else if (chipselect && ~write_n && (address == 2))
-          irq_mask <= writedata[2 : 0];
+          irq_mask <= writedata[3 : 0];
     end
 
 

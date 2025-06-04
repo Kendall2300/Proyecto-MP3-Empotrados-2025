@@ -232,7 +232,7 @@
 					"strict" : false
 				},
 				{
-					"name" : "buttons_export_export[2]",
+					"name" : "buttons_export_export[3]",
 					"strict" : false
 				},
 				{
@@ -241,6 +241,10 @@
 				},
 				{
 					"name" : "buttons_export_export[1]",
+					"strict" : false
+				},
+				{
+					"name" : "buttons_export_export[2]",
 					"strict" : false
 				},
 				{

@@ -1,25 +1,32 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst MP3_PC.REG_7SEG -pg 1 -lvl 3 -y 350
-preplace inst MP3_PC.CLK -pg 1 -lvl 1 -y 310
-preplace inst MP3_PC.TIMER_1s -pg 1 -lvl 3 -y 150
-preplace inst MP3_PC.REG_SWITCH -pg 1 -lvl 3 -y 530
+preplace inst MP3_PC.REG_7SEG -pg 1 -lvl 3 -y 620
+preplace inst MP3_PC.PLL_VGA -pg 1 -lvl 2 -y 680
+preplace inst MP3_PC.CLK -pg 1 -lvl 1 -y 580
+preplace inst MP3_PC.VGA_CONTROLLER -pg 1 -lvl 4 -y 50
+preplace inst MP3_PC.TIMER_1s -pg 1 -lvl 3 -y 420
+preplace inst MP3_PC.REG_SWITCH -pg 1 -lvl 3 -y 800
 preplace inst MP3_PC.NIOSII.reset_bridge -pg 1
 preplace inst MP3_PC -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst MP3_PC.RAM -pg 1 -lvl 3 -y 450
-preplace inst MP3_PC.UART -pg 1 -lvl 3 -y 250
-preplace inst MP3_PC.NIOSII -pg 1 -lvl 2 -y 240
-preplace inst MP3_PC.REG_BUTTON -pg 1 -lvl 3 -y 30
+preplace inst MP3_PC.RAM -pg 1 -lvl 3 -y 720
+preplace inst MP3_PC.UART -pg 1 -lvl 3 -y 520
+preplace inst MP3_PC.NIOSII -pg 1 -lvl 2 -y 510
+preplace inst MP3_PC.VGA_BUFFER -pg 1 -lvl 3 -y 30
+preplace inst MP3_PC.REG_BUTTON -pg 1 -lvl 3 -y 300
 preplace inst MP3_PC.NIOSII.cpu -pg 1
 preplace inst MP3_PC.NIOSII.clock_bridge -pg 1
-preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(SLAVE)TIMER_1s.reset,(SLAVE)NIOSII.reset,(SLAVE)REG_SWITCH.reset,(SLAVE)REG_BUTTON.reset,(SLAVE)UART.reset,(SLAVE)REG_7SEG.reset,(SLAVE)RAM.reset1,(MASTER)CLK.clk_reset) 1 1 2 330 580 750
-preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)REG_7SEG.external_connection,(SLAVE)MP3_PC.seven_seg) 1 0 3 NJ 380 NJ 380 NJ
-preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(SLAVE)REG_BUTTON.irq,(SLAVE)UART.irq,(SLAVE)TIMER_1s.irq,(MASTER)NIOSII.irq) 1 2 1 710
+preplace netloc POINT_TO_POINT<net_container>MP3_PC</net_container>(MASTER)VGA_BUFFER.avalon_char_source,(SLAVE)VGA_CONTROLLER.avalon_vga_sink) 1 3 1 N
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)REG_SWITCH.external_connection,(SLAVE)MP3_PC.switchs) 1 0 3 NJ 830 NJ 830 NJ
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.seven_seg,(SLAVE)REG_7SEG.external_connection) 1 0 3 NJ 770 NJ 770 NJ
 preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.reset,(SLAVE)CLK.clk_in_reset) 1 0 1 NJ
-preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(SLAVE)NIOSII.clk,(SLAVE)RAM.clk1,(MASTER)CLK.clk,(SLAVE)TIMER_1s.clk,(SLAVE)REG_7SEG.clk,(SLAVE)REG_BUTTON.clk,(SLAVE)REG_SWITCH.clk,(SLAVE)UART.clk) 1 1 2 310 400 730
-preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)CLK.clk_in,(SLAVE)MP3_PC.clk) 1 0 1 NJ
-preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.switchs,(SLAVE)REG_SWITCH.external_connection) 1 0 3 NJ 560 NJ 560 NJ
-preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.buttons_export,(SLAVE)REG_BUTTON.external_connection) 1 0 3 NJ 60 NJ 60 NJ
-preplace netloc INTERCONNECT<net_container>MP3_PC</net_container>(SLAVE)REG_7SEG.s1,(SLAVE)RAM.s1,(SLAVE)REG_SWITCH.s1,(SLAVE)NIOSII.debug_mem_slave,(MASTER)NIOSII.instruction_master,(MASTER)NIOSII.data_master,(SLAVE)REG_BUTTON.s1,(SLAVE)TIMER_1s.s1,(SLAVE)UART.avalon_jtag_slave) 1 1 2 330 200 690
-levelinfo -pg 1 0 100 940
-levelinfo -hier MP3_PC 110 140 450 780 930
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)REG_BUTTON.external_connection,(SLAVE)MP3_PC.buttons_export) 1 0 3 NJ 330 NJ 330 NJ
+preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(MASTER)CLK.clk_reset,(SLAVE)REG_BUTTON.reset,(SLAVE)REG_7SEG.reset,(SLAVE)UART.reset,(SLAVE)RAM.reset1,(SLAVE)VGA_BUFFER.reset,(SLAVE)REG_SWITCH.reset,(SLAVE)VGA_CONTROLLER.reset,(SLAVE)TIMER_1s.reset,(SLAVE)NIOSII.reset,(SLAVE)PLL_VGA.reset) 1 1 3 330 650 770 160 1190
+preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(MASTER)PLL_VGA.outclk0,(SLAVE)VGA_BUFFER.clk,(SLAVE)VGA_CONTROLLER.clk) 1 2 2 710 140 1150
+preplace netloc INTERCONNECT<net_container>MP3_PC</net_container>(SLAVE)VGA_BUFFER.avalon_char_buffer_slave,(SLAVE)REG_SWITCH.s1,(MASTER)NIOSII.instruction_master,(SLAVE)UART.avalon_jtag_slave,(SLAVE)TIMER_1s.s1,(SLAVE)REG_7SEG.s1,(MASTER)NIOSII.data_master,(SLAVE)REG_BUTTON.s1,(SLAVE)RAM.s1,(SLAVE)VGA_BUFFER.avalon_char_control_slave,(SLAVE)NIOSII.debug_mem_slave) 1 1 2 350 670 730
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)VGA_CONTROLLER.external_interface,(SLAVE)MP3_PC.vga_controller) 1 0 4 NJ 180 NJ 180 NJ 180 NJ
+preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(SLAVE)NIOSII.clk,(MASTER)CLK.clk,(SLAVE)REG_BUTTON.clk,(SLAVE)TIMER_1s.clk,(SLAVE)REG_7SEG.clk,(SLAVE)PLL_VGA.refclk,(SLAVE)REG_SWITCH.clk,(SLAVE)RAM.clk1,(SLAVE)UART.clk) 1 1 2 310 790 810
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.pll_vga_locked,(SLAVE)PLL_VGA.locked) 1 0 2 NJ 690 NJ
+preplace netloc FAN_OUT<net_container>MP3_PC</net_container>(MASTER)NIOSII.irq,(SLAVE)UART.irq,(SLAVE)REG_BUTTON.irq,(SLAVE)TIMER_1s.irq) 1 2 1 750
+preplace netloc EXPORT<net_container>MP3_PC</net_container>(SLAVE)MP3_PC.clk,(SLAVE)CLK.clk_in) 1 0 1 NJ
+levelinfo -pg 1 0 100 1380
+levelinfo -hier MP3_PC 110 140 470 840 1220 1370

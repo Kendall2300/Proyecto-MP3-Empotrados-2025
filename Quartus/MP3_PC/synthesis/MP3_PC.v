@@ -4,7 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module MP3_PC (
-		input  wire [2:0]  buttons_export_export, // buttons_export.export
+		input  wire [3:0]  buttons_export_export, // buttons_export.export
 		input  wire        clk_clk,               //            clk.clk
 		output wire        pll_vga_locked_export, // pll_vga_locked.export
 		input  wire        reset_reset_n,         //          reset.reset_n

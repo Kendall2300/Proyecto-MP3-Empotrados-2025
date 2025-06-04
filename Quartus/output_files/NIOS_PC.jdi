@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="57974289a3f65e95c55e"/>
+    <hash md5_digest_80b="6b13b7922482e7ab2f85"/>
   </project>
   <file_info>
     <file device="5CSEMA5F31C6" path="NIOS_PC.sof" usercode="0xFFFFFFFF"/>
@@ -139,7 +139,7 @@
   <sld_infos>
     <sld_info hpath="" name="">
       <assignment_values>
-        <assignment_value text="QSYS_NAME MP3_PC HAS_SOPCINFO 1 GENERATION_ID 1747778216"/>
+        <assignment_value text="QSYS_NAME MP3_PC HAS_SOPCINFO 1 GENERATION_ID 1748932134"/>
       </assignment_values>
       <parameters/>
     </sld_info>

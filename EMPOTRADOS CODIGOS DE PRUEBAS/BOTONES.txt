@@ -1,0 +1,184 @@
+#include "sys/alt_stdio.h"
+#include "alt_types.h"
+#include "sys/alt_irq.h"
+#include <unistd.h>
+
+#define BUTTON_BASE  0x4820
+#define TIMER_BASE   0x4800
+#define HEX_DISPLAY_BASE 0x4840  // 7-segmentos unificado
+
+// Variables globales para tiempo
+unsigned int total_seconds = 0;
+
+// Tabla de conversión para 7-segmentos (cátodo común)
+unsigned char hex_table[10] = {
+    0x3F, // 0: 0011 1111
+    0x06, // 1: 0000 0110
+    0x5B, // 2: 0101 1011
+    0x4F, // 3: 0100 1111
+    0x66, // 4: 0110 0110
+    0x6D, // 5: 0110 1101
+    0x7D, // 6: 0111 1101
+    0x07, // 7: 0000 0111
+    0x7F, // 8: 0111 1111
+    0x6F  // 9: 0110 1111
+};
+
+// Tabla alternativa para ánodo común (invertida)
+unsigned char hex_table_inverted[10] = {
+    0xC0, // 0: ~0x3F
+    0xF9, // 1: ~0x06
+    0xA4, // 2: ~0x5B
+    0xB0, // 3: ~0x4F
+    0x99, // 4: ~0x66
+    0x92, // 5: ~0x6D
+    0x82, // 6: ~0x7D
+    0xF8, // 7: ~0x07
+    0x80, // 8: ~0x7F
+    0x90  // 9: ~0x6F
+};
+
+// Prototipos
+void timer_ir_handler(void * context);
+void update_7segment_display(void);
+
+int main()
+{ 
+    volatile unsigned int * button_ptr = (unsigned int *) BUTTON_BASE;
+    volatile unsigned int * timer_status_ptr = (unsigned int *) TIMER_BASE;
+    volatile unsigned int * timer_ctr_ptr = timer_status_ptr + 1;
+
+    unsigned int last_button_state = 0;
+    unsigned int current_button_state = 0;
+
+    alt_putstr("=== Test Botones + Timer 7-Segmentos ===\n");
+    alt_putstr("Boton 0x8: Anterior\n");
+    alt_putstr("Boton 0x4: Play\n");
+    alt_putstr("Boton 0x3: Siguiente\n");
+    alt_putstr("Timer mostrando MM:SS en 7-segmentos\n");
+    alt_putstr("=======================================\n");
+
+    // Configurar timer
+    if (*timer_status_ptr != 0) {
+        alt_printf("ERROR: Timer status is not 0 -> %x\n", *timer_status_ptr);
+        return 0;
+    }
+
+    // Registrar interrupción del timer
+    alt_ic_isr_register(0x0, 0x2, timer_ir_handler, 0x0, 0x0);
+
+    // Iniciar timer
+    alt_putstr("Iniciando timer...\n");
+    *timer_ctr_ptr = 0x7;
+
+    // Esperar que el timer esté corriendo
+    while (*timer_status_ptr != 0x2);
+    alt_putstr("Timer funcionando - Display MM:SS iniciado\n");
+
+    // Inicializar display
+    update_7segment_display();
+
+    while (1) {
+        // Leer estado de botones
+        current_button_state = *button_ptr;
+
+        // Detectar cambios en botones
+        unsigned int button_pressed = current_button_state & (~last_button_state);
+
+        // Verificar cada botón
+        if (button_pressed & 0x8) { // Botón anterior
+            alt_putstr(" ANTERIOR\n");
+        }
+
+        if (button_pressed & 0x4) { // Botón play
+            alt_putstr(" PLAY/PAUSE\n");
+        }
+
+        if (button_pressed & 0x3) { // Botón siguiente
+            alt_putstr(" SIGUIENTE\n");
+        }
+
+        // Actualizar estado anterior de botones
+        last_button_state = current_button_state;
+
+        usleep(50000); // 50ms
+    }
+
+    return 0;
+}
+
+void timer_ir_handler(void * context) {
+    // Limpiar interrupción del timer
+    volatile int* timer_status_ptr = (int *) TIMER_BASE;
+    *timer_status_ptr = 0x0;
+
+    // Incrementar contador cada segundo (asumiendo timer configurado para 1 Hz)
+    total_seconds++;
+
+    // Actualizar display 7-segmentos
+    update_7segment_display();
+
+    // Debug cada 10 segundos
+    if (total_seconds % 10 == 0) {
+        int minutes = total_seconds / 60;
+        int seconds = total_seconds % 60;
+        alt_printf("Tiempo: %02d:%02d\n", minutes, seconds);
+    }
+}
+
+void update_7segment_display(void) {
+    volatile unsigned int * hex_display_ptr = (unsigned int *) HEX_DISPLAY_BASE;
+
+    // Calcular minutos y segundos
+    int minutes = total_seconds / 60;
+    int seconds = total_seconds % 60;
+
+    // Limitar a 99:59 para display
+    if (minutes > 99) {
+        minutes = 99;
+        seconds = 59;
+    }
+
+    // Extraer dígitos individuales
+    int min_tens = minutes / 10;
+    int min_ones = minutes % 10;
+    int sec_tens = seconds / 10;
+    int sec_ones = seconds % 10;
+
+    // PRUEBA 1: Display simple - solo mostrar el valor de segundos en HEX0
+    // Descomenta una de estas opciones para debugging:
+
+    /* Opción A: Usar tabla normal (cátodo común)
+    unsigned int full_display =
+        (hex_table[min_tens] << 24) |  // HEX3 - decenas de minutos
+        (hex_table[min_ones] << 16) |  // HEX2 - unidades de minutos
+        (hex_table[sec_tens] << 8)  |  // HEX1 - decenas de segundos
+        (hex_table[sec_ones] << 0);    // HEX0 - unidades de segundos*/
+
+    /*
+    // Opción B: Usar tabla invertida (ánodo común)
+    unsigned int full_display =
+        (hex_table_inverted[min_tens] << 24) |
+        (hex_table_inverted[min_ones] << 16) |
+        (hex_table_inverted[sec_tens] << 8)  |
+        (hex_table_inverted[sec_ones] << 0);
+    */
+
+    /*
+    // Opción C: Test simple - solo encender segmentos específicos
+    unsigned int full_display = 0x3F3F3F3F; // Todos los displays muestran "0"
+    */
+
+    /**/
+    // Opción D: Test de un solo display
+    unsigned int full_display = hex_table_inverted[1]; // Solo HEX0
+    //*/
+
+    // Escribir al display
+    *hex_display_ptr = full_display;
+
+    // Debug: mostrar qué se está escribiendo
+    if (total_seconds % 5 == 0) { // Cada 5 segundos
+        alt_printf("Display: 0x%08X -> %02d:%02d\n", full_display, minutes, seconds);
+    }
+}
