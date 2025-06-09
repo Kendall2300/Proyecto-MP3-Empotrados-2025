@@ -55,6 +55,11 @@
          value = "10";
          type = "int";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
    element RAM
    {
@@ -91,7 +96,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -133,7 +138,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
    }
@@ -175,7 +180,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -193,6 +198,11 @@
       {
          value = "9";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element VGA_BUFFER.avalon_char_buffer_slave
@@ -217,6 +227,11 @@
       {
          value = "8";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
 }
@@ -701,14 +716,14 @@
   <parameter name="width" value="28" />
  </module>
  <module name="REG_BUTTON" kind="altera_avalon_pio" version="18.0" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
+  <parameter name="captureEdge" value="true" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
+  <parameter name="edgeType" value="FALLING" />
   <parameter name="generateIRQ" value="true" />
-  <parameter name="irqType" value="LEVEL" />
+  <parameter name="irqType" value="EDGE" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
@@ -897,9 +912,6 @@
    version="18.0"
    start="PLL_VGA.outclk0"
    end="VGA_CONTROLLER.clk" />
- <connection kind="interrupt" version="18.0" start="NIOSII.irq" end="UART.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
  <connection kind="interrupt" version="18.0" start="NIOSII.irq" end="TIMER_1s.irq">
   <parameter name="irqNumber" value="1" />
  </connection>
@@ -909,6 +921,9 @@
    start="NIOSII.irq"
    end="REG_BUTTON.irq">
   <parameter name="irqNumber" value="2" />
+ </connection>
+ <connection kind="interrupt" version="18.0" start="NIOSII.irq" end="UART.irq">
+  <parameter name="irqNumber" value="0" />
  </connection>
  <connection kind="reset" version="18.0" start="CLK.clk_reset" end="UART.reset" />
  <connection

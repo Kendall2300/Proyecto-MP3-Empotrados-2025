@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="MP3_PC" kind="system" version="18.0" fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2025.06.03.00:29:11 -->
+ <!-- 2025.06.08.22:00:53 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1748932134</value>
+  <value>1749441637</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -9384,7 +9384,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <assignment>
    <name>embeddedsw.CMacro.BIT_CLEARING_EDGE_REGISTER</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.BIT_MODIFYING_OUTPUT_REGISTER</name>
@@ -9392,7 +9392,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.CAPTURE</name>
-   <value>0</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.DATA_WIDTH</name>
@@ -9408,7 +9408,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.EDGE_TYPE</name>
-   <value>NONE</value>
+   <value>FALLING</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.FREQ</name>
@@ -9428,7 +9428,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.IRQ_TYPE</name>
-   <value>LEVEL</value>
+   <value>EDGE</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RESET_VALUE</name>
@@ -9452,15 +9452,19 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt-type</name>
-   <value>4</value>
+   <value>2</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.altr,interrupt_type</name>
-   <value>4</value>
+   <value>2</value>
+  </assignment>
+  <assignment>
+   <name>embeddedsw.dts.params.edge_type</name>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.level_trigger</name>
-   <value>1</value>
+   <value>0</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.resetvalue</name>
@@ -9472,9 +9476,9 @@ the requested settings for a module instance. -->
   </assignment>
   <parameter name="bitClearingEdgeCapReg">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -9488,7 +9492,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="captureEdge">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -9504,9 +9508,9 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="edgeType">
    <type>java.lang.String</type>
-   <value>RISING</value>
+   <value>FALLING</value>
    <derived>false</derived>
-   <enabled>false</enabled>
+   <enabled>true</enabled>
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
@@ -9520,7 +9524,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="irqType">
    <type>java.lang.String</type>
-   <value>LEVEL</value>
+   <value>EDGE</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -9602,7 +9606,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_capture">
    <type>boolean</type>
-   <value>false</value>
+   <value>true</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -9610,7 +9614,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_edge_type">
    <type>java.lang.String</type>
-   <value>NONE</value>
+   <value>FALLING</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -9618,7 +9622,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_irq_type">
    <type>java.lang.String</type>
-   <value>LEVEL</value>
+   <value>EDGE</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -10170,7 +10174,7 @@ particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
    <assignment>
     <name>embeddedsw.dts.irq.tx_type</name>
-    <value>ACTIVE_HIGH</value>
+    <value>RISING_EDGE</value>
    </assignment>
    <parameter name="associatedAddressablePoint">
     <type>com.altera.entityinterfaces.IConnectionPoint</type>
@@ -17944,7 +17948,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="IRQ_MAP">
    <type>java.lang.String</type>
-   <value>0:0,1:1,2:2</value>
+   <value>0:1,1:2,2:0</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -18136,9 +18140,9 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>UART</moduleName>
+    <moduleName>TIMER_1s</moduleName>
     <slaveName>irq</slaveName>
-    <name>UART.irq</name>
+    <name>TIMER_1s.irq</name>
     <interruptNumber>0</interruptNumber>
    </interrupt>
   </interface>
@@ -18212,9 +18216,9 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>TIMER_1s</moduleName>
+    <moduleName>REG_BUTTON</moduleName>
     <slaveName>irq</slaveName>
-    <name>TIMER_1s.irq</name>
+    <name>REG_BUTTON.irq</name>
     <interruptNumber>0</interruptNumber>
    </interrupt>
   </interface>
@@ -18288,9 +18292,9 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <interrupt>
     <isBridge>false</isBridge>
-    <moduleName>REG_BUTTON</moduleName>
+    <moduleName>UART</moduleName>
     <slaveName>irq</slaveName>
-    <name>REG_BUTTON.irq</name>
+    <name>UART.irq</name>
     <interruptNumber>0</interruptNumber>
    </interrupt>
   </interface>
@@ -20273,45 +20277,10 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>s1</endConnectionPoint>
  </connection>
  <connection
-   name="irq_mapper.receiver0/UART.irq"
+   name="irq_mapper.receiver0/TIMER_1s.irq"
    kind="interrupt"
    version="18.0"
    start="irq_mapper.receiver0"
-   end="UART.irq">
-  <parameter name="irqNumber">
-   <type>int</type>
-   <value>0</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>irq_mapper</startModule>
-  <startConnectionPoint>receiver0</startConnectionPoint>
-  <endModule>UART</endModule>
-  <endConnectionPoint>irq</endConnectionPoint>
- </connection>
- <connection
-   name="irq_mapper.receiver1/TIMER_1s.irq"
-   kind="interrupt"
-   version="18.0"
-   start="irq_mapper.receiver1"
    end="TIMER_1s.irq">
   <parameter name="irqNumber">
    <type>int</type>
@@ -20338,15 +20307,15 @@ parameters are a RESULT of the module parameters. -->
    <valid>true</valid>
   </parameter>
   <startModule>irq_mapper</startModule>
-  <startConnectionPoint>receiver1</startConnectionPoint>
+  <startConnectionPoint>receiver0</startConnectionPoint>
   <endModule>TIMER_1s</endModule>
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
-   name="irq_mapper.receiver2/REG_BUTTON.irq"
+   name="irq_mapper.receiver1/REG_BUTTON.irq"
    kind="interrupt"
    version="18.0"
-   start="irq_mapper.receiver2"
+   start="irq_mapper.receiver1"
    end="REG_BUTTON.irq">
   <parameter name="irqNumber">
    <type>int</type>
@@ -20373,8 +20342,43 @@ parameters are a RESULT of the module parameters. -->
    <valid>true</valid>
   </parameter>
   <startModule>irq_mapper</startModule>
-  <startConnectionPoint>receiver2</startConnectionPoint>
+  <startConnectionPoint>receiver1</startConnectionPoint>
   <endModule>REG_BUTTON</endModule>
+  <endConnectionPoint>irq</endConnectionPoint>
+ </connection>
+ <connection
+   name="irq_mapper.receiver2/UART.irq"
+   kind="interrupt"
+   version="18.0"
+   start="irq_mapper.receiver2"
+   end="UART.irq">
+  <parameter name="irqNumber">
+   <type>int</type>
+   <value>0</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>irq_mapper</startModule>
+  <startConnectionPoint>receiver2</startConnectionPoint>
+  <endModule>UART</endModule>
   <endConnectionPoint>irq</endConnectionPoint>
  </connection>
  <connection
@@ -21376,5 +21380,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <reportVersion>18.0 614</reportVersion>
- <uniqueIdentifier>0A002700000400000197347A9118</uniqueIdentifier>
+ <uniqueIdentifier>0A00270000040000019752D8F7AF</uniqueIdentifier>
 </EnsembleReport>

@@ -92,9 +92,9 @@ module MP3_PC (
 	wire         mm_interconnect_0_ram_s1_write;                                    // mm_interconnect_0:RAM_s1_write -> RAM:write
 	wire  [31:0] mm_interconnect_0_ram_s1_writedata;                                // mm_interconnect_0:RAM_s1_writedata -> RAM:writedata
 	wire         mm_interconnect_0_ram_s1_clken;                                    // mm_interconnect_0:RAM_s1_clken -> RAM:clken
-	wire         irq_mapper_receiver0_irq;                                          // UART:av_irq -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                          // TIMER_1s:irq -> irq_mapper:receiver1_irq
-	wire         irq_mapper_receiver2_irq;                                          // REG_BUTTON:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver0_irq;                                          // TIMER_1s:irq -> irq_mapper:receiver0_irq
+	wire         irq_mapper_receiver1_irq;                                          // REG_BUTTON:irq -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                          // UART:av_irq -> irq_mapper:receiver2_irq
 	wire  [31:0] niosii_irq_irq;                                                    // irq_mapper:sender_irq -> NIOSII:irq
 	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [NIOSII:reset_n, RAM:reset, REG_7SEG:reset_n, REG_BUTTON:reset_n, REG_SWITCH:reset_n, TIMER_1s:reset_n, UART:rst_n, irq_mapper:reset, mm_interconnect_0:NIOSII_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                // rst_controller:reset_req -> [NIOSII:reset_req, RAM:reset_req, rst_translator:reset_req_in]
@@ -170,7 +170,7 @@ module MP3_PC (
 		.chipselect (mm_interconnect_0_reg_button_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_0_reg_button_s1_readdata),   //                    .readdata
 		.in_port    (buttons_export_export),                      // external_connection.export
-		.irq        (irq_mapper_receiver2_irq)                    //                 irq.irq
+		.irq        (irq_mapper_receiver1_irq)                    //                 irq.irq
 	);
 
 	MP3_PC_REG_SWITCH reg_switch (
@@ -189,7 +189,7 @@ module MP3_PC (
 		.readdata   (mm_interconnect_0_timer_1s_s1_readdata),   //      .readdata
 		.chipselect (mm_interconnect_0_timer_1s_s1_chipselect), //      .chipselect
 		.write_n    (~mm_interconnect_0_timer_1s_s1_write),     //      .write_n
-		.irq        (irq_mapper_receiver1_irq)                  //   irq.irq
+		.irq        (irq_mapper_receiver0_irq)                  //   irq.irq
 	);
 
 	MP3_PC_UART uart (
@@ -202,7 +202,7 @@ module MP3_PC (
 		.av_write_n     (~mm_interconnect_0_uart_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_uart_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_uart_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver0_irq)                              //               irq.irq
+		.av_irq         (irq_mapper_receiver2_irq)                              //               irq.irq
 	);
 
 	MP3_PC_VGA_BUFFER vga_buffer (

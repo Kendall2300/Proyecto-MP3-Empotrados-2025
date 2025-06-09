@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>03/06/2025 07:34:52 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1749000892193</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>08/06/2025 10:05:18 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1749441918635</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\Gits\Proyecto-MP3-Empotrados-2025\Quartus\software\NIOSII_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\MP3_PC.sopcinfo</SopcDesignFile>
