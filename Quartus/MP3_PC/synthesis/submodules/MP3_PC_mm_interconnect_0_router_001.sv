@@ -47,23 +47,23 @@ module MP3_PC_mm_interconnect_0_router_001_default_decode
      parameter DEFAULT_CHANNEL = 1,
                DEFAULT_WR_CHANNEL = -1,
                DEFAULT_RD_CHANNEL = -1,
-               DEFAULT_DESTID = 1 
+               DEFAULT_DESTID = 4 
    )
-  (output [79 - 76 : 0] default_destination_id,
-   output [9-1 : 0] default_wr_channel,
-   output [9-1 : 0] default_rd_channel,
-   output [9-1 : 0] default_src_channel
+  (output [80 - 77 : 0] default_destination_id,
+   output [12-1 : 0] default_wr_channel,
+   output [12-1 : 0] default_rd_channel,
+   output [12-1 : 0] default_src_channel
   );
 
   assign default_destination_id = 
-    DEFAULT_DESTID[79 - 76 : 0];
+    DEFAULT_DESTID[80 - 77 : 0];
 
   generate
     if (DEFAULT_CHANNEL == -1) begin : no_default_channel_assignment
       assign default_src_channel = '0;
     end
     else begin : default_channel_assignment
-      assign default_src_channel = 9'b1 << DEFAULT_CHANNEL;
+      assign default_src_channel = 12'b1 << DEFAULT_CHANNEL;
     end
   endgenerate
 
@@ -73,8 +73,8 @@ module MP3_PC_mm_interconnect_0_router_001_default_decode
       assign default_rd_channel = '0;
     end
     else begin : default_rw_channel_assignment
-      assign default_wr_channel = 9'b1 << DEFAULT_WR_CHANNEL;
-      assign default_rd_channel = 9'b1 << DEFAULT_RD_CHANNEL;
+      assign default_wr_channel = 12'b1 << DEFAULT_WR_CHANNEL;
+      assign default_rd_channel = 12'b1 << DEFAULT_RD_CHANNEL;
     end
   endgenerate
 
@@ -93,7 +93,7 @@ module MP3_PC_mm_interconnect_0_router_001
     // Command Sink (Input)
     // -------------------
     input                       sink_valid,
-    input  [93-1 : 0]    sink_data,
+    input  [94-1 : 0]    sink_data,
     input                       sink_startofpacket,
     input                       sink_endofpacket,
     output                      sink_ready,
@@ -102,8 +102,8 @@ module MP3_PC_mm_interconnect_0_router_001
     // Command Source (Output)
     // -------------------
     output                          src_valid,
-    output reg [93-1    : 0] src_data,
-    output reg [9-1 : 0] src_channel,
+    output reg [94-1    : 0] src_data,
+    output reg [12-1 : 0] src_channel,
     output                          src_startofpacket,
     output                          src_endofpacket,
     input                           src_ready
@@ -112,18 +112,18 @@ module MP3_PC_mm_interconnect_0_router_001
     // -------------------------------------------------------
     // Local parameters and variables
     // -------------------------------------------------------
-    localparam PKT_ADDR_H = 50;
+    localparam PKT_ADDR_H = 51;
     localparam PKT_ADDR_L = 36;
-    localparam PKT_DEST_ID_H = 79;
-    localparam PKT_DEST_ID_L = 76;
-    localparam PKT_PROTECTION_H = 83;
-    localparam PKT_PROTECTION_L = 81;
-    localparam ST_DATA_W = 93;
-    localparam ST_CHANNEL_W = 9;
+    localparam PKT_DEST_ID_H = 80;
+    localparam PKT_DEST_ID_L = 77;
+    localparam PKT_PROTECTION_H = 84;
+    localparam PKT_PROTECTION_L = 82;
+    localparam ST_DATA_W = 94;
+    localparam ST_CHANNEL_W = 12;
     localparam DECODER_TYPE = 0;
 
-    localparam PKT_TRANS_WRITE = 53;
-    localparam PKT_TRANS_READ  = 54;
+    localparam PKT_TRANS_WRITE = 54;
+    localparam PKT_TRANS_READ  = 55;
 
     localparam PKT_ADDR_W = PKT_ADDR_H-PKT_ADDR_L + 1;
     localparam PKT_DEST_ID_W = PKT_DEST_ID_H-PKT_DEST_ID_L + 1;
@@ -165,7 +165,7 @@ module MP3_PC_mm_interconnect_0_router_001
     assign src_startofpacket = sink_startofpacket;
     assign src_endofpacket   = sink_endofpacket;
     wire [PKT_DEST_ID_W-1:0] default_destid;
-    wire [9-1 : 0] default_src_channel;
+    wire [12-1 : 0] default_src_channel;
 
 
 
@@ -191,14 +191,14 @@ module MP3_PC_mm_interconnect_0_router_001
 
     // ( 0x0 .. 0x4000 )
     if ( {address[RG:PAD0],{PAD0{1'b0}}} == 15'h0   ) begin
-            src_channel = 9'b10;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
+            src_channel = 12'b10;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 4;
     end
 
     // ( 0x4000 .. 0x4800 )
     if ( {address[RG:PAD1],{PAD1{1'b0}}} == 15'h4000   ) begin
-            src_channel = 9'b01;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
+            src_channel = 12'b01;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
 end

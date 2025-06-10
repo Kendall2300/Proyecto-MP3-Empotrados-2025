@@ -821,7 +821,7 @@ module MP3_PC_NIOSII_cpu_nios2_oci_dbrk (
                                         )
 ;
 
-  output  [ 14: 0] cpu_d_address;
+  output  [ 15: 0] cpu_d_address;
   output           cpu_d_read;
   output  [ 31: 0] cpu_d_readdata;
   output           cpu_d_wait;
@@ -837,7 +837,7 @@ module MP3_PC_NIOSII_cpu_nios2_oci_dbrk (
   input   [ 31: 0] E_st_data;
   input   [ 31: 0] av_ld_data_aligned_filtered;
   input            clk;
-  input   [ 14: 0] d_address;
+  input   [ 15: 0] d_address;
   input            d_read;
   input            d_waitrequest;
   input            d_write;
@@ -845,7 +845,7 @@ module MP3_PC_NIOSII_cpu_nios2_oci_dbrk (
   input            reset_n;
 
 
-wire    [ 14: 0] cpu_d_address;
+wire    [ 15: 0] cpu_d_address;
 wire             cpu_d_read;
 wire    [ 31: 0] cpu_d_readdata;
 wire             cpu_d_wait;
@@ -1201,7 +1201,7 @@ module MP3_PC_NIOSII_cpu_nios2_oci_dtrace (
   output  [ 35: 0] atm;
   output  [ 35: 0] dtm;
   input            clk;
-  input   [ 14: 0] cpu_d_address;
+  input   [ 15: 0] cpu_d_address;
   input            cpu_d_read;
   input   [ 31: 0] cpu_d_readdata;
   input            cpu_d_wait;
@@ -2095,9 +2095,9 @@ wire             write_strobe;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
-          oci_ienable <= 32'b00000000000000000000000000000111;
+          oci_ienable <= 32'b00000000000000000000000000011111;
       else if (take_action_oci_intr_mask_reg)
-          oci_ienable <= writedata | ~(32'b00000000000000000000000000000111);
+          oci_ienable <= writedata | ~(32'b00000000000000000000000000011111);
     end
 
 
@@ -2339,7 +2339,7 @@ defparam MP3_PC_NIOSII_cpu_ociram_sp_ram.lpm_file = "MP3_PC_NIOSII_cpu_ociram_de
 `endif
 //synthesis translate_on
   assign cfgrom_readdata = (MonAReg[4 : 2] == 3'd0)? 32'h00000020 :
-    (MonAReg[4 : 2] == 3'd1)? 32'h00000f0f :
+    (MonAReg[4 : 2] == 3'd1)? 32'h0000100f :
     (MonAReg[4 : 2] == 3'd2)? 32'h00040000 :
     (MonAReg[4 : 2] == 3'd3)? 32'h00000100 :
     (MonAReg[4 : 2] == 3'd4)? 32'h20000000 :
@@ -2408,7 +2408,7 @@ module MP3_PC_NIOSII_cpu_nios2_oci (
   input   [ 31: 0] av_ld_data_aligned_filtered;
   input   [  3: 0] byteenable_nxt;
   input            clk;
-  input   [ 14: 0] d_address;
+  input   [ 15: 0] d_address;
   input            d_read;
   input            d_waitrequest;
   input            d_write;
@@ -2427,7 +2427,7 @@ reg     [  8: 0] address;
 wire    [ 35: 0] atm;
 wire    [ 31: 0] break_readreg;
 reg     [  3: 0] byteenable;
-wire    [ 14: 0] cpu_d_address;
+wire    [ 15: 0] cpu_d_address;
 wire             cpu_d_read;
 wire    [ 31: 0] cpu_d_readdata;
 wire             cpu_d_wait;
@@ -2864,7 +2864,7 @@ module MP3_PC_NIOSII_cpu (
                          )
 ;
 
-  output  [ 14: 0] d_address;
+  output  [ 15: 0] d_address;
   output  [  3: 0] d_byteenable;
   output           d_read;
   output           d_write;
@@ -3110,7 +3110,7 @@ wire             E_ld_stall;
 wire    [ 31: 0] E_logic_result;
 wire             E_logic_result_is_0;
 wire             E_lt;
-wire    [ 14: 0] E_mem_baddr;
+wire    [ 15: 0] E_mem_baddr;
 wire    [  3: 0] E_mem_byte_en;
 reg              E_new_inst;
 wire             E_rf_ecc_recoverable_valid;
@@ -3443,7 +3443,7 @@ reg     [ 31: 0] W_ienable_reg;
 wire    [ 31: 0] W_ienable_reg_nxt;
 reg     [ 31: 0] W_ipending_reg;
 wire    [ 31: 0] W_ipending_reg_nxt;
-wire    [ 14: 0] W_mem_baddr;
+wire    [ 15: 0] W_mem_baddr;
 reg              W_rf_ecc_recoverable_valid;
 reg              W_rf_ecc_unrecoverable_valid;
 wire             W_rf_ecc_valid_any;
@@ -3483,7 +3483,7 @@ wire             av_ld_rshift8;
 reg              av_ld_waiting_for_data;
 wire             av_ld_waiting_for_data_nxt;
 wire             av_sign_bit;
-wire    [ 14: 0] d_address;
+wire    [ 15: 0] d_address;
 reg     [  3: 0] d_byteenable;
 reg              d_read;
 wire             d_read_nxt;
@@ -3856,7 +3856,7 @@ reg              wait_for_one_post_bret_inst;
   //custom_instruction_master, which is an e_custom_instruction_master
   assign dummy_ci_port = 1'b0;
   assign E_ci_multi_stall = 1'b0;
-  assign iactive = irq[31 : 0] & 32'b00000000000000000000000000000111;
+  assign iactive = irq[31 : 0] & 32'b00000000000000000000000000011111;
   assign F_pc_sel_nxt = (R_ctrl_exception | W_rf_ecc_unrecoverable_valid) ? 2'b00 :
     R_ctrl_break                              ? 2'b01 :
     (W_br_taken | R_ctrl_uncond_cti_non_br)   ? 2'b10 :
@@ -4166,7 +4166,7 @@ defparam MP3_PC_NIOSII_cpu_register_bank_b.lpm_file = "MP3_PC_NIOSII_cpu_rf_ram_
     E_arith_src1 - E_arith_src2 :
     E_arith_src1 + E_arith_src2;
 
-  assign E_mem_baddr = E_arith_result[14 : 0];
+  assign E_mem_baddr = E_arith_result[15 : 0];
   assign E_logic_result = (R_logic_op == 2'b00)? (~(E_src1 | E_src2)) :
     (R_logic_op == 2'b01)? (E_src1 & E_src2) :
     (R_logic_op == 2'b10)? (E_src1 | E_src2) :
@@ -4489,7 +4489,7 @@ defparam MP3_PC_NIOSII_cpu_register_bank_b.lpm_file = "MP3_PC_NIOSII_cpu_rf_ram_
 
   assign W_wr_data = W_wr_data_non_zero;
   assign W_br_taken = R_ctrl_br_uncond | (R_ctrl_br & W_cmp_result);
-  assign W_mem_baddr = W_alu_result[14 : 0];
+  assign W_mem_baddr = W_alu_result[15 : 0];
   assign W_status_reg = W_status_reg_pie;
   assign E_wrctl_status = R_ctrl_wrctl_inst & 
     (D_iw_control_regnum == 5'd0);
@@ -4522,9 +4522,9 @@ defparam MP3_PC_NIOSII_cpu_register_bank_b.lpm_file = "MP3_PC_NIOSII_cpu_rf_ram_
 
   assign W_bstatus_reg_nxt = E_valid ? W_bstatus_reg_inst_nxt : W_bstatus_reg;
   assign W_ienable_reg_nxt = ((E_wrctl_ienable & E_valid) ? 
-    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000000111;
+    E_src1[31 : 0] : W_ienable_reg) & 32'b00000000000000000000000000011111;
 
-  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000000111;
+  assign W_ipending_reg_nxt = iactive & W_ienable_reg & oci_ienable & 32'b00000000000000000000000000011111;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)
