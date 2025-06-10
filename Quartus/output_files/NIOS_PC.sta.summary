@@ -7,11 +7,11 @@ Slack : 2.563
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 12.330
+Slack : 11.150
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.121
+Slack : 0.115
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -23,11 +23,11 @@ Slack : 5.041
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 14.655
+Slack : 14.442
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.924
+Slack : 0.983
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -43,7 +43,7 @@ Slack : 1.039
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.788
+Slack : 15.767
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -51,11 +51,11 @@ Slack : 2.560
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 12.404
+Slack : 11.258
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.112
+Slack : 0.105
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -67,11 +67,11 @@ Slack : 5.134
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 14.728
+Slack : 14.511
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.879
+Slack : 0.919
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -87,7 +87,7 @@ Slack : 1.046
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.798
+Slack : 15.767
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -95,11 +95,11 @@ Slack : 2.943
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 14.146
+Slack : 13.440
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.021
+Slack : 0.020
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -111,11 +111,11 @@ Slack : 5.393
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 15.635
+Slack : 15.448
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.495
+Slack : 0.498
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -131,7 +131,7 @@ Slack : 1.307
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.768
+Slack : 15.740
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -139,11 +139,11 @@ Slack : 2.943
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 14.427
+Slack : 13.807
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.006
+Slack : 0.008
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -155,11 +155,11 @@ Slack : 5.491
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 15.778
+Slack : 15.618
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.440
+Slack : 0.437
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'MP3_PC_HPS:hps|MP3_PC_HPS_hps_io:hps_io|MP3_PC_HPS_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk'
@@ -175,7 +175,7 @@ Slack : 1.311
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.793
+Slack : 15.764
 TNS   : 0.000
 
 ------------------------------------------------------------

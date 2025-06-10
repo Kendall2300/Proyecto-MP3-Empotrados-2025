@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOSII' in SOPC Builder design 'MP3_PC'
  * SOPC Builder design path: ../../MP3_PC.sopcinfo
  *
- * Generated: Sun Jun 08 22:05:19 CST 2025
+ * Generated: Tue Jun 10 11:23:40 CST 2025
  */
 
 /*
@@ -56,6 +56,63 @@
 
 
 /*
+ * Audio configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_Audio altera_up_avalon_audio
+#define AUDIO_BASE 0x4860
+#define AUDIO_IRQ 4
+#define AUDIO_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define AUDIO_NAME "/dev/Audio"
+#define AUDIO_SPAN 16
+#define AUDIO_TYPE "altera_up_avalon_audio"
+
+
+/*
+ * AudioConfig configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_AudioConfig altera_up_avalon_audio_and_video_config
+#define AUDIOCONFIG_BASE 0x4820
+#define AUDIOCONFIG_IRQ -1
+#define AUDIOCONFIG_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define AUDIOCONFIG_NAME "/dev/AudioConfig"
+#define AUDIOCONFIG_SPAN 16
+#define AUDIOCONFIG_TYPE "altera_up_avalon_audio_and_video_config"
+
+
+/*
+ * AudioRAM configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_AudioRAM altera_avalon_onchip_memory2
+#define AUDIORAM_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
+#define AUDIORAM_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
+#define AUDIORAM_BASE 0x8000
+#define AUDIORAM_CONTENTS_INFO ""
+#define AUDIORAM_DUAL_PORT 1
+#define AUDIORAM_GUI_RAM_BLOCK_TYPE "AUTO"
+#define AUDIORAM_INIT_CONTENTS_FILE "MP3_PC_AudioRAM"
+#define AUDIORAM_INIT_MEM_CONTENT 0
+#define AUDIORAM_INSTANCE_ID "NONE"
+#define AUDIORAM_IRQ -1
+#define AUDIORAM_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define AUDIORAM_NAME "/dev/AudioRAM"
+#define AUDIORAM_NON_DEFAULT_INIT_FILE_ENABLED 0
+#define AUDIORAM_RAM_BLOCK_TYPE "AUTO"
+#define AUDIORAM_READ_DURING_WRITE_MODE "DONT_CARE"
+#define AUDIORAM_SINGLE_CLOCK_OP 1
+#define AUDIORAM_SIZE_MULTIPLE 1
+#define AUDIORAM_SIZE_VALUE 32768
+#define AUDIORAM_SPAN 32768
+#define AUDIORAM_TYPE "altera_avalon_onchip_memory2"
+#define AUDIORAM_WRITABLE 1
+
+
+/*
  * CPU configuration
  *
  */
@@ -68,7 +125,7 @@
 #define ALT_CPU_CPU_ID_SIZE 1
 #define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "tiny"
-#define ALT_CPU_DATA_ADDR_WIDTH 0xf
+#define ALT_CPU_DATA_ADDR_WIDTH 0x10
 #define ALT_CPU_DCACHE_LINE_SIZE 0
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 0
 #define ALT_CPU_DCACHE_SIZE 0
@@ -105,7 +162,7 @@
 #define NIOS2_CPU_ID_SIZE 1
 #define NIOS2_CPU_ID_VALUE 0x00000000
 #define NIOS2_CPU_IMPLEMENTATION "tiny"
-#define NIOS2_DATA_ADDR_WIDTH 0xf
+#define NIOS2_DATA_ADDR_WIDTH 0x10
 #define NIOS2_DCACHE_LINE_SIZE 0
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 0
 #define NIOS2_DCACHE_SIZE 0
@@ -138,6 +195,8 @@
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
+#define __ALTERA_UP_AVALON_AUDIO
+#define __ALTERA_UP_AVALON_AUDIO_AND_VIDEO_CONFIG
 #define __ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA
 
 
@@ -162,7 +221,7 @@
 #define RAM_NON_DEFAULT_INIT_FILE_ENABLED 0
 #define RAM_RAM_BLOCK_TYPE "AUTO"
 #define RAM_READ_DURING_WRITE_MODE "DONT_CARE"
-#define RAM_SINGLE_CLOCK_OP 0
+#define RAM_SINGLE_CLOCK_OP 1
 #define RAM_SIZE_MULTIPLE 1
 #define RAM_SIZE_VALUE 16384
 #define RAM_SPAN 16384
@@ -176,7 +235,7 @@
  */
 
 #define ALT_MODULE_CLASS_REG_7SEG altera_avalon_pio
-#define REG_7SEG_BASE 0x4840
+#define REG_7SEG_BASE 0x4850
 #define REG_7SEG_BIT_CLEARING_EDGE_REGISTER 0
 #define REG_7SEG_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define REG_7SEG_CAPTURE 0
@@ -203,7 +262,7 @@
  */
 
 #define ALT_MODULE_CLASS_REG_BUTTON altera_avalon_pio
-#define REG_BUTTON_BASE 0x4820
+#define REG_BUTTON_BASE 0x4830
 #define REG_BUTTON_BIT_CLEARING_EDGE_REGISTER 1
 #define REG_BUTTON_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define REG_BUTTON_CAPTURE 1
@@ -230,7 +289,7 @@
  */
 
 #define ALT_MODULE_CLASS_REG_SWITCH altera_avalon_pio
-#define REG_SWITCH_BASE 0x4830
+#define REG_SWITCH_BASE 0x4840
 #define REG_SWITCH_BIT_CLEARING_EDGE_REGISTER 0
 #define REG_SWITCH_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define REG_SWITCH_CAPTURE 0
@@ -257,8 +316,8 @@
  */
 
 #define ALT_DEVICE_FAMILY "Cyclone V"
-#define ALT_ENHANCED_INTERRUPT_API_PRESENT
 #define ALT_IRQ_BASE NULL
+#define ALT_LEGACY_INTERRUPT_API_PRESENT
 #define ALT_LOG_PORT "/dev/null"
 #define ALT_LOG_PORT_BASE 0x0
 #define ALT_LOG_PORT_DEV null
@@ -267,19 +326,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/UART"
-#define ALT_STDERR_BASE 0x4858
+#define ALT_STDERR_BASE 0x4870
 #define ALT_STDERR_DEV UART
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/UART"
-#define ALT_STDIN_BASE 0x4858
+#define ALT_STDIN_BASE 0x4870
 #define ALT_STDIN_DEV UART
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/UART"
-#define ALT_STDOUT_BASE 0x4858
+#define ALT_STDOUT_BASE 0x4870
 #define ALT_STDOUT_DEV UART
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -319,7 +378,7 @@
  */
 
 #define ALT_MODULE_CLASS_UART altera_avalon_jtag_uart
-#define UART_BASE 0x4858
+#define UART_BASE 0x4870
 #define UART_IRQ 0
 #define UART_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define UART_NAME "/dev/UART"
@@ -351,7 +410,7 @@
  */
 
 #define ALT_MODULE_CLASS_VGA_BUFFER_avalon_char_control_slave altera_up_avalon_video_character_buffer_with_dma
-#define VGA_BUFFER_AVALON_CHAR_CONTROL_SLAVE_BASE 0x4850
+#define VGA_BUFFER_AVALON_CHAR_CONTROL_SLAVE_BASE 0x4878
 #define VGA_BUFFER_AVALON_CHAR_CONTROL_SLAVE_IRQ -1
 #define VGA_BUFFER_AVALON_CHAR_CONTROL_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define VGA_BUFFER_AVALON_CHAR_CONTROL_SLAVE_NAME "/dev/VGA_BUFFER_avalon_char_control_slave"

@@ -240,6 +240,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "reset_reset_n",
+					"strict" : false
+				},
+				{
 					"name" : "audio_external_DACLRCK",
 					"strict" : false
 				},

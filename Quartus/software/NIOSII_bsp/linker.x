@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOSII' in SOPC Builder design 'MP3_PC'
  * SOPC Builder design path: ../../MP3_PC.sopcinfo
  *
- * Generated: Tue Jun 03 16:13:11 CST 2025
+ * Generated: Tue Jun 10 10:49:01 CST 2025
  */
 
 /*
@@ -52,10 +52,12 @@ MEMORY
 {
     reset : ORIGIN = 0x0, LENGTH = 32
     RAM : ORIGIN = 0x20, LENGTH = 16352
+    AudioRAM : ORIGIN = 0x8000, LENGTH = 32768
 }
 
 /* Define symbols for each memory base-address */
 __alt_mem_RAM = 0x0;
+__alt_mem_AudioRAM = 0x8000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -319,6 +321,23 @@ SECTIONS
     } > RAM
 
     PROVIDE (_alt_partition_RAM_load_addr = LOADADDR(.RAM));
+
+    /*
+     *
+     * This section's LMA is set to the .text region.
+     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
+     *
+     */
+
+    .AudioRAM : AT ( LOADADDR (.RAM) + SIZEOF (.RAM) )
+    {
+        PROVIDE (_alt_partition_AudioRAM_start = ABSOLUTE(.));
+        *(.AudioRAM .AudioRAM. AudioRAM.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_AudioRAM_end = ABSOLUTE(.));
+    } > AudioRAM
+
+    PROVIDE (_alt_partition_AudioRAM_load_addr = LOADADDR(.AudioRAM));
 
     /*
      * Stabs debugging sections.

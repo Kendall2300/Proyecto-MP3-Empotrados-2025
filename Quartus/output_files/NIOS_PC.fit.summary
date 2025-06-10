@@ -1,13 +1,13 @@
-Fitter Status : Successful - Tue Jun 10 10:44:54 2025
+Fitter Status : Successful - Tue Jun 10 11:20:23 2025
 Quartus Prime Version : 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 Revision Name : NIOS_PC
 Top-level Entity Name : MP3_PC
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 1,677 / 32,070 ( 5 % )
-Total registers : 2601
-Total pins : 121 / 457 ( 26 % )
+Logic utilization (in ALMs) : 1,654 / 32,070 ( 5 % )
+Total registers : 2566
+Total pins : 122 / 457 ( 27 % )
 Total virtual pins : 0
 Total block memory bits : 474,112 / 4,065,280 ( 12 % )
 Total RAM Blocks : 63 / 397 ( 16 % )

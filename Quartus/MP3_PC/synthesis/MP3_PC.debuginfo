@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="MP3_PC" kind="system" version="18.0" fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2025.06.10.10:23:47 -->
+ <!-- 2025.06.10.10:58:51 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1749572584</value>
+  <value>1749574691</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -55956,11 +55956,11 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.LOAD_VALUE</name>
-   <value>49999999</value>
+   <value>49999</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.MULT</name>
-   <value>1.0</value>
+   <value>0.001</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.PERIOD</name>
@@ -55968,7 +55968,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.PERIOD_UNITS</name>
-   <value>s</value>
+   <value>ms</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.RESET_OUTPUT</name>
@@ -55980,7 +55980,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TICKS_PER_SEC</name>
-   <value>1</value>
+   <value>1000</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMEOUT_PULSE_OUTPUT</name>
@@ -56024,7 +56024,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="periodUnits">
    <type>java.lang.String</type>
-   <value>SEC</value>
+   <value>MSEC</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -56082,7 +56082,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="periodUnitsString">
    <type>java.lang.String</type>
-   <value>s</value>
+   <value>ms</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -56090,7 +56090,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="valueInSecond">
    <type>double</type>
-   <value>1.0</value>
+   <value>0.001</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -56098,7 +56098,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="loadValue">
    <type>java.lang.String</type>
-   <value>49999999</value>
+   <value>49999</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -56106,7 +56106,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="mult">
    <type>double</type>
-   <value>1.0</value>
+   <value>0.001</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -56114,7 +56114,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="ticksPerSec">
    <type>double</type>
-   <value>1.0</value>
+   <value>1000.0</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -67608,33 +67608,6 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset</endConnectionPoint>
  </connection>
  <connection
-   name="HPS_fpga_interfaces.h2f_reset/CLK.clk_in_reset"
-   kind="reset"
-   version="18.0"
-   start="HPS_fpga_interfaces.h2f_reset"
-   end="CLK.clk_in_reset">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>HPS_fpga_interfaces</startModule>
-  <startConnectionPoint>h2f_reset</startConnectionPoint>
-  <endModule>CLK</endModule>
-  <endConnectionPoint>clk_in_reset</endConnectionPoint>
- </connection>
- <connection
    name="NIOSII.data_master/mm_interconnect_0.NIOSII_data_master"
    kind="avalon"
    version="18.0"
@@ -70177,7 +70150,7 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <plugin>
-  <instanceCount>3</instanceCount>
+  <instanceCount>2</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -70217,5 +70190,5 @@ parameters are a RESULT of the module parameters. -->
   <version>18.0</version>
  </plugin>
  <reportVersion>18.0 614</reportVersion>
- <uniqueIdentifier>0A0027000004000001975AA721B6</uniqueIdentifier>
+ <uniqueIdentifier>0A0027000004000001975AC74798</uniqueIdentifier>
 </EnsembleReport>

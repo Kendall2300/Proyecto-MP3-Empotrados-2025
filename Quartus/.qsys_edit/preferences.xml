@@ -3,13 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="30" />
+   <connections preferredWidth="255" />
    <irq preferredWidth="34" />
    <name preferredWidth="169" />
    <inputclock preferredWidth="111" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library/University Program/Clock,Library/Memory Interfaces and Controllers,Library/Basic Functions/On Chip Memory,Library,Library/Basic Functions/Configuration and Programming,Library/DSP,Library/Basic Functions,Project,Library/University Program/Memory,Library/DSP/Video and Image Processing,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Library/University Program,Library/Memory Interfaces and Controllers/SDRAM" />
- <window width="1376" height="784" x="-8" y="-8" />
+ <library expandedCategories="Library,Project" />
+ <window width="1376" height="784" x="1352" y="-8" />
 </preferences>

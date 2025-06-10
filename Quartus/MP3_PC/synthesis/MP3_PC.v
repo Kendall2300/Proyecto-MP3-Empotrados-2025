@@ -39,6 +39,7 @@ module MP3_PC (
 		output wire        memory_mem_dm,                 //                   .mem_dm
 		input  wire        memory_oct_rzqin,              //                   .oct_rzqin
 		output wire        pll_vga_locked_export,         //     pll_vga_locked.export
+		input  wire        reset_reset_n,                 //              reset.reset_n
 		output wire [27:0] seven_seg_export,              //          seven_seg.export
 		input  wire [2:0]  switchs_export,                //            switchs.export
 		output wire        vga_controller_CLK,            //     vga_controller.CLK
@@ -57,7 +58,6 @@ module MP3_PC (
 	wire         vga_buffer_avalon_char_source_startofpacket;                       // VGA_BUFFER:stream_startofpacket -> VGA_CONTROLLER:startofpacket
 	wire         vga_buffer_avalon_char_source_endofpacket;                         // VGA_BUFFER:stream_endofpacket -> VGA_CONTROLLER:endofpacket
 	wire         pll_vga_outclk0_clk;                                               // PLL_VGA:outclk_0 -> [VGA_BUFFER:clk, VGA_CONTROLLER:clk, mm_interconnect_0:PLL_VGA_outclk0_clk, rst_controller_002:clk]
-	wire         hps_h2f_reset_reset;                                               // HPS:h2f_rst_n -> [AudioPLL:ref_reset_reset, PLL_VGA:rst, rst_controller:reset_in0, rst_controller_001:reset_in0, rst_controller_002:reset_in0]
 	wire  [31:0] niosii_data_master_readdata;                                       // mm_interconnect_0:NIOSII_data_master_readdata -> NIOSII:d_readdata
 	wire         niosii_data_master_waitrequest;                                    // mm_interconnect_0:NIOSII_data_master_waitrequest -> NIOSII:d_waitrequest
 	wire         niosii_data_master_debugaccess;                                    // NIOSII:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:NIOSII_data_master_debugaccess
@@ -193,6 +193,7 @@ module MP3_PC (
 	wire         irq_mapper_receiver0_irq;                                          // irq_synchronizer:sender_irq -> irq_mapper:receiver0_irq
 	wire   [0:0] irq_synchronizer_receiver_irq;                                     // HPS:h2f_sdmmc_irq -> irq_synchronizer:receiver_irq
 	wire         rst_controller_reset_out_reset;                                    // rst_controller:reset_out -> [Audio:reset, mm_interconnect_0:Audio_reset_reset_bridge_in_reset_reset, mm_interconnect_1:HPS_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset]
+	wire         hps_h2f_reset_reset;                                               // HPS:h2f_rst_n -> rst_controller:reset_in0
 	wire         rst_controller_001_reset_out_reset;                                // rst_controller_001:reset_out -> [AudioConfig:reset, AudioRAM:reset, NIOSII:reset_n, RAM:reset, REG_7SEG:reset_n, REG_BUTTON:reset_n, REG_SWITCH:reset_n, TIMER_1s:reset_n, UART:rst_n, irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:NIOSII_reset_reset_bridge_in_reset_reset, mm_interconnect_1:AudioRAM_reset1_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_001_reset_out_reset_req;                            // rst_controller_001:reset_req -> [NIOSII:reset_req, RAM:reset_req, rst_translator:reset_req_in]
 	wire         rst_controller_002_reset_out_reset;                                // rst_controller_002:reset_out -> [VGA_BUFFER:reset, VGA_CONTROLLER:reset, mm_interconnect_0:VGA_BUFFER_reset_reset_bridge_in_reset_reset]
@@ -227,10 +228,10 @@ module MP3_PC (
 	);
 
 	MP3_PC_AudioPLL audiopll (
-		.ref_clk_clk        (clk_clk),              //      ref_clk.clk
-		.ref_reset_reset    (~hps_h2f_reset_reset), //    ref_reset.reset
-		.audio_clk_clk      (audio_pll_clk_clk),    //    audio_clk.clk
-		.reset_source_reset ()                      // reset_source.reset
+		.ref_clk_clk        (clk_clk),           //      ref_clk.clk
+		.ref_reset_reset    (~reset_reset_n),    //    ref_reset.reset
+		.audio_clk_clk      (audio_pll_clk_clk), //    audio_clk.clk
+		.reset_source_reset ()                   // reset_source.reset
 	);
 
 	MP3_PC_AudioRAM audioram (
@@ -467,7 +468,7 @@ module MP3_PC (
 
 	MP3_PC_PLL_VGA pll_vga (
 		.refclk   (clk_clk),               //  refclk.clk
-		.rst      (~hps_h2f_reset_reset),  //   reset.reset
+		.rst      (~reset_reset_n),        //   reset.reset
 		.outclk_0 (pll_vga_outclk0_clk),   // outclk0.clk
 		.locked   (pll_vga_locked_export)  //  locked.export
 	);
@@ -836,7 +837,7 @@ module MP3_PC (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
-		.reset_in0      (~hps_h2f_reset_reset),                   // reset_in0.reset
+		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
 		.clk            (clk_clk),                                //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset),     // reset_out.reset
 		.reset_req      (rst_controller_001_reset_out_reset_req), //          .reset_req
@@ -899,7 +900,7 @@ module MP3_PC (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_002 (
-		.reset_in0      (~hps_h2f_reset_reset),               // reset_in0.reset
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
 		.clk            (pll_vga_outclk0_clk),                //       clk.clk
 		.reset_out      (rst_controller_002_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)

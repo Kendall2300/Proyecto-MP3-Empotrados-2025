@@ -1,8 +1,11 @@
 	component MP3_PC is
 		port (
+			audio_config_SDAT             : inout std_logic                     := 'X';             -- SDAT
+			audio_config_SCLK             : out   std_logic;                                        -- SCLK
 			audio_external_BCLK           : in    std_logic                     := 'X';             -- BCLK
 			audio_external_DACDAT         : out   std_logic;                                        -- DACDAT
 			audio_external_DACLRCK        : in    std_logic                     := 'X';             -- DACLRCK
+			audio_pll_clk_clk             : out   std_logic;                                        -- clk
 			buttons_export_export         : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                       : in    std_logic                     := 'X';             -- clk
 			hps_h2f_mpu_events_eventi     : in    std_logic                     := 'X';             -- eventi
@@ -42,17 +45,18 @@
 			vga_controller_R              : out   std_logic_vector(7 downto 0);                     -- R
 			vga_controller_G              : out   std_logic_vector(7 downto 0);                     -- G
 			vga_controller_B              : out   std_logic_vector(7 downto 0);                     -- B
-			audio_config_SDAT             : inout std_logic                     := 'X';             -- SDAT
-			audio_config_SCLK             : out   std_logic;                                        -- SCLK
-			audio_pll_clk_clk             : out   std_logic                                         -- clk
+			reset_reset_n                 : in    std_logic                     := 'X'              -- reset_n
 		);
 	end component MP3_PC;
 
 	u0 : component MP3_PC
 		port map (
+			audio_config_SDAT             => CONNECTED_TO_audio_config_SDAT,             --       audio_config.SDAT
+			audio_config_SCLK             => CONNECTED_TO_audio_config_SCLK,             --                   .SCLK
 			audio_external_BCLK           => CONNECTED_TO_audio_external_BCLK,           --     audio_external.BCLK
 			audio_external_DACDAT         => CONNECTED_TO_audio_external_DACDAT,         --                   .DACDAT
 			audio_external_DACLRCK        => CONNECTED_TO_audio_external_DACLRCK,        --                   .DACLRCK
+			audio_pll_clk_clk             => CONNECTED_TO_audio_pll_clk_clk,             --      audio_pll_clk.clk
 			buttons_export_export         => CONNECTED_TO_buttons_export_export,         --     buttons_export.export
 			clk_clk                       => CONNECTED_TO_clk_clk,                       --                clk.clk
 			hps_h2f_mpu_events_eventi     => CONNECTED_TO_hps_h2f_mpu_events_eventi,     -- hps_h2f_mpu_events.eventi
@@ -92,8 +96,6 @@
 			vga_controller_R              => CONNECTED_TO_vga_controller_R,              --                   .R
 			vga_controller_G              => CONNECTED_TO_vga_controller_G,              --                   .G
 			vga_controller_B              => CONNECTED_TO_vga_controller_B,              --                   .B
-			audio_config_SDAT             => CONNECTED_TO_audio_config_SDAT,             --       audio_config.SDAT
-			audio_config_SCLK             => CONNECTED_TO_audio_config_SCLK,             --                   .SCLK
-			audio_pll_clk_clk             => CONNECTED_TO_audio_pll_clk_clk              --      audio_pll_clk.clk
+			reset_reset_n                 => CONNECTED_TO_reset_reset_n                  --              reset.reset_n
 		);
 

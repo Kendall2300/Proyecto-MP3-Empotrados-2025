@@ -3,7 +3,7 @@
 # Machine generated for CPU 'NIOSII' in SOPC Builder design 'MP3_PC'
 # SOPC Builder design path: ../../MP3_PC.sopcinfo
 #
-# Generated: Tue Jun 03 16:13:11 CST 2025
+# Generated: Tue Jun 10 10:49:01 CST 2025
 
 # DO NOT MODIFY THIS FILE
 #
@@ -48,3 +48,6 @@
 
 # RAM
 memory 0x0 0x4000 cache
+
+# AudioRAM
+memory 0x8000 0x10000 cache

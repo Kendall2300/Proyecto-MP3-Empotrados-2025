@@ -1,7 +1,10 @@
 	MP3_PC u0 (
+		.audio_config_SDAT             (<connected-to-audio_config_SDAT>),             //       audio_config.SDAT
+		.audio_config_SCLK             (<connected-to-audio_config_SCLK>),             //                   .SCLK
 		.audio_external_BCLK           (<connected-to-audio_external_BCLK>),           //     audio_external.BCLK
 		.audio_external_DACDAT         (<connected-to-audio_external_DACDAT>),         //                   .DACDAT
 		.audio_external_DACLRCK        (<connected-to-audio_external_DACLRCK>),        //                   .DACLRCK
+		.audio_pll_clk_clk             (<connected-to-audio_pll_clk_clk>),             //      audio_pll_clk.clk
 		.buttons_export_export         (<connected-to-buttons_export_export>),         //     buttons_export.export
 		.clk_clk                       (<connected-to-clk_clk>),                       //                clk.clk
 		.hps_h2f_mpu_events_eventi     (<connected-to-hps_h2f_mpu_events_eventi>),     // hps_h2f_mpu_events.eventi
@@ -41,8 +44,6 @@
 		.vga_controller_R              (<connected-to-vga_controller_R>),              //                   .R
 		.vga_controller_G              (<connected-to-vga_controller_G>),              //                   .G
 		.vga_controller_B              (<connected-to-vga_controller_B>),              //                   .B
-		.audio_config_SDAT             (<connected-to-audio_config_SDAT>),             //       audio_config.SDAT
-		.audio_config_SCLK             (<connected-to-audio_config_SCLK>),             //                   .SCLK
-		.audio_pll_clk_clk             (<connected-to-audio_pll_clk_clk>)              //      audio_pll_clk.clk
+		.reset_reset_n                 (<connected-to-reset_reset_n>)                  //              reset.reset_n
 	);
 

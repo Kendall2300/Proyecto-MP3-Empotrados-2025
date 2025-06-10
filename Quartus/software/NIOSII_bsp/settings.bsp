@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>08/06/2025 10:05:18 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1749441918635</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>10/06/2025 11:23:40 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1749576220264</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>D:\Gits\Proyecto-MP3-Empotrados-2025\Quartus\software\NIOSII_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\MP3_PC.sopcinfo</SopcDesignFile>
@@ -911,40 +911,58 @@
                 <attributes>timer</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>REG_BUTTON</slaveDescriptor>
+                <slaveDescriptor>AudioConfig</slaveDescriptor>
                 <addressRange>0x00004820 - 0x0000482F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>REG_SWITCH</slaveDescriptor>
+                <slaveDescriptor>REG_BUTTON</slaveDescriptor>
                 <addressRange>0x00004830 - 0x0000483F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>REG_7SEG</slaveDescriptor>
+                <slaveDescriptor>REG_SWITCH</slaveDescriptor>
                 <addressRange>0x00004840 - 0x0000484F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>VGA_BUFFER_avalon_char_control_slave</slaveDescriptor>
-                <addressRange>0x00004850 - 0x00004857</addressRange>
-                <addressSpan>8</addressSpan>
+                <slaveDescriptor>REG_7SEG</slaveDescriptor>
+                <addressRange>0x00004850 - 0x0000485F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>Audio</slaveDescriptor>
+                <addressRange>0x00004860 - 0x0000486F</addressRange>
+                <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>UART</slaveDescriptor>
-                <addressRange>0x00004858 - 0x0000485F</addressRange>
+                <addressRange>0x00004870 - 0x00004877</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>VGA_BUFFER_avalon_char_control_slave</slaveDescriptor>
+                <addressRange>0x00004878 - 0x0000487F</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>VGA_BUFFER_avalon_char_buffer_slave</slaveDescriptor>
                 <addressRange>0x00006000 - 0x00007FFF</addressRange>
                 <addressSpan>8192</addressSpan>
                 <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>AudioRAM</slaveDescriptor>
+                <addressRange>0x00008000 - 0x0000FFFF</addressRange>
+                <addressSpan>32768</addressSpan>
+                <attributes>memory</attributes>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>

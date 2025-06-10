@@ -4,7 +4,7 @@
  * Machine generated for CPU 'NIOSII' in SOPC Builder design 'MP3_PC'
  * SOPC Builder design path: ../../MP3_PC.sopcinfo
  *
- * Generated: Tue Jun 03 16:13:11 CST 2025
+ * Generated: Tue Jun 10 10:49:01 CST 2025
  */
 
 /*
@@ -65,6 +65,8 @@
  *
  */
 
+#define AUDIORAM_REGION_BASE 0x8000
+#define AUDIORAM_REGION_SPAN 32768
 #define RAM_REGION_BASE 0x20
 #define RAM_REGION_SPAN 16352
 #define RESET_REGION_BASE 0x0
