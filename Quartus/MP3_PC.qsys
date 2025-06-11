@@ -39,7 +39,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -60,7 +60,7 @@
       }
       datum sopceditor_expanded
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
    }
@@ -363,11 +363,6 @@
    type="conduit"
    dir="end" />
  <interface
-   name="audio_pll_clk"
-   internal="AudioPLL.audio_clk"
-   type="clock"
-   dir="start" />
- <interface
    name="buttons_export"
    internal="REG_BUTTON.external_connection"
    type="conduit"
@@ -414,7 +409,7 @@
    kind="altera_up_avalon_audio_and_video_config"
    version="18.0"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="12288135" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
   <parameter name="audio_in" value="Microphone to ADC" />
   <parameter name="bit_length" value="24" />
@@ -1011,8 +1006,8 @@
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
  <module name="NIOSII" kind="altera_nios2_gen2" version="18.0" enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="2" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="2" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -1652,6 +1647,11 @@
    version="18.0"
    start="VGA_BUFFER.avalon_char_source"
    end="VGA_CONTROLLER.avalon_vga_sink" />
+ <connection
+   kind="clock"
+   version="18.0"
+   start="AudioPLL.audio_clk"
+   end="AudioConfig.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="UART.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="TIMER_1s.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="REG_7SEG.clk" />
@@ -1659,7 +1659,6 @@
  <connection kind="clock" version="18.0" start="CLK.clk" end="REG_BUTTON.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="NIOSII.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="Audio.clk" />
- <connection kind="clock" version="18.0" start="CLK.clk" end="AudioConfig.clk" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="RAM.clk1" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="AudioRAM.clk1" />
  <connection kind="clock" version="18.0" start="CLK.clk" end="HPS.f2h_axi_clock" />

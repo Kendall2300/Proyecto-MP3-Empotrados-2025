@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="MP3_PC" kind="MP3_PC" version="1.0" fabric="QSYS">
  <!-- Format version 18.0 614 (Future versions may contain additional information.) -->
- <!-- 2025.06.10.10:58:12 -->
+ <!-- 2025.06.10.16:39:21 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1749574691</value>
+  <value>1749595159</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -928,7 +928,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_RATE">
    <type>java.lang.Long</type>
-   <value>50000000</value>
+   <value>12288135</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -999,7 +999,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="clockRate">
     <type>java.lang.Long</type>
-    <value>50000000</value>
+    <value>12288135</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -1720,6 +1720,12 @@ parameters are a RESULT of the module parameters. -->
     <width>1</width>
     <role>clk</role>
    </port>
+   <clockDomainMember>
+    <isBridge>false</isBridge>
+    <moduleName>AudioConfig</moduleName>
+    <slaveName>clk</slaveName>
+    <name>AudioConfig.clk</name>
+   </clockDomainMember>
   </interface>
   <interface name="reset_source" kind="reset_source" version="18.0">
    <!-- The connection points exposed by a module instance for the
@@ -3286,12 +3292,6 @@ parameters are a RESULT of the module parameters. -->
     <moduleName>Audio</moduleName>
     <slaveName>clk</slaveName>
     <name>Audio.clk</name>
-   </clockDomainMember>
-   <clockDomainMember>
-    <isBridge>false</isBridge>
-    <moduleName>AudioConfig</moduleName>
-    <slaveName>clk</slaveName>
-    <name>AudioConfig.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -78572,7 +78572,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_CLOCK_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -78582,7 +78582,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="AUTO_CLK_RESET_DOMAIN">
    <type>java.lang.Integer</type>
-   <value>1</value>
+   <value>2</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -101300,6 +101300,33 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>avalon_vga_sink</endConnectionPoint>
  </connection>
  <connection
+   name="AudioPLL.audio_clk/AudioConfig.clk"
+   kind="clock"
+   version="18.0"
+   start="AudioPLL.audio_clk"
+   end="AudioConfig.clk">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>AudioPLL</startModule>
+  <startConnectionPoint>audio_clk</startConnectionPoint>
+  <endModule>AudioConfig</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
+ </connection>
+ <connection
    name="CLK.clk/UART.clk"
    kind="clock"
    version="18.0"
@@ -101486,33 +101513,6 @@ parameters are a RESULT of the module parameters. -->
   <startModule>CLK</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
   <endModule>Audio</endModule>
-  <endConnectionPoint>clk</endConnectionPoint>
- </connection>
- <connection
-   name="CLK.clk/AudioConfig.clk"
-   kind="clock"
-   version="18.0"
-   start="CLK.clk"
-   end="AudioConfig.clk">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>CLK</startModule>
-  <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>AudioConfig</endModule>
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection

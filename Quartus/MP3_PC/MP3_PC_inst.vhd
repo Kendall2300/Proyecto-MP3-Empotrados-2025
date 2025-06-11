@@ -5,7 +5,6 @@
 			audio_external_BCLK           : in    std_logic                     := 'X';             -- BCLK
 			audio_external_DACDAT         : out   std_logic;                                        -- DACDAT
 			audio_external_DACLRCK        : in    std_logic                     := 'X';             -- DACLRCK
-			audio_pll_clk_clk             : out   std_logic;                                        -- clk
 			buttons_export_export         : in    std_logic_vector(3 downto 0)  := (others => 'X'); -- export
 			clk_clk                       : in    std_logic                     := 'X';             -- clk
 			hps_h2f_mpu_events_eventi     : in    std_logic                     := 'X';             -- eventi
@@ -35,6 +34,7 @@
 			memory_mem_dm                 : out   std_logic;                                        -- mem_dm
 			memory_oct_rzqin              : in    std_logic                     := 'X';             -- oct_rzqin
 			pll_vga_locked_export         : out   std_logic;                                        -- export
+			reset_reset_n                 : in    std_logic                     := 'X';             -- reset_n
 			seven_seg_export              : out   std_logic_vector(27 downto 0);                    -- export
 			switchs_export                : in    std_logic_vector(2 downto 0)  := (others => 'X'); -- export
 			vga_controller_CLK            : out   std_logic;                                        -- CLK
@@ -44,8 +44,7 @@
 			vga_controller_SYNC           : out   std_logic;                                        -- SYNC
 			vga_controller_R              : out   std_logic_vector(7 downto 0);                     -- R
 			vga_controller_G              : out   std_logic_vector(7 downto 0);                     -- G
-			vga_controller_B              : out   std_logic_vector(7 downto 0);                     -- B
-			reset_reset_n                 : in    std_logic                     := 'X'              -- reset_n
+			vga_controller_B              : out   std_logic_vector(7 downto 0)                      -- B
 		);
 	end component MP3_PC;
 
@@ -56,7 +55,6 @@
 			audio_external_BCLK           => CONNECTED_TO_audio_external_BCLK,           --     audio_external.BCLK
 			audio_external_DACDAT         => CONNECTED_TO_audio_external_DACDAT,         --                   .DACDAT
 			audio_external_DACLRCK        => CONNECTED_TO_audio_external_DACLRCK,        --                   .DACLRCK
-			audio_pll_clk_clk             => CONNECTED_TO_audio_pll_clk_clk,             --      audio_pll_clk.clk
 			buttons_export_export         => CONNECTED_TO_buttons_export_export,         --     buttons_export.export
 			clk_clk                       => CONNECTED_TO_clk_clk,                       --                clk.clk
 			hps_h2f_mpu_events_eventi     => CONNECTED_TO_hps_h2f_mpu_events_eventi,     -- hps_h2f_mpu_events.eventi
@@ -86,6 +84,7 @@
 			memory_mem_dm                 => CONNECTED_TO_memory_mem_dm,                 --                   .mem_dm
 			memory_oct_rzqin              => CONNECTED_TO_memory_oct_rzqin,              --                   .oct_rzqin
 			pll_vga_locked_export         => CONNECTED_TO_pll_vga_locked_export,         --     pll_vga_locked.export
+			reset_reset_n                 => CONNECTED_TO_reset_reset_n,                 --              reset.reset_n
 			seven_seg_export              => CONNECTED_TO_seven_seg_export,              --          seven_seg.export
 			switchs_export                => CONNECTED_TO_switchs_export,                --            switchs.export
 			vga_controller_CLK            => CONNECTED_TO_vga_controller_CLK,            --     vga_controller.CLK
@@ -95,7 +94,6 @@
 			vga_controller_SYNC           => CONNECTED_TO_vga_controller_SYNC,           --                   .SYNC
 			vga_controller_R              => CONNECTED_TO_vga_controller_R,              --                   .R
 			vga_controller_G              => CONNECTED_TO_vga_controller_G,              --                   .G
-			vga_controller_B              => CONNECTED_TO_vga_controller_B,              --                   .B
-			reset_reset_n                 => CONNECTED_TO_reset_reset_n                  --              reset.reset_n
+			vga_controller_B              => CONNECTED_TO_vga_controller_B               --                   .B
 		);
 

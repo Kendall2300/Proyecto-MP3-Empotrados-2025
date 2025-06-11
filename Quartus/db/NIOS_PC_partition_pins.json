@@ -252,15 +252,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "switchs_export[0]",
-					"strict" : false
-				},
-				{
 					"name" : "buttons_export_export[0]",
 					"strict" : false
 				},
 				{
-					"name" : "buttons_export_export[3]",
+					"name" : "switchs_export[0]",
+					"strict" : false
+				},
+				{
+					"name" : "switchs_export[1]",
 					"strict" : false
 				},
 				{
@@ -272,11 +272,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "switchs_export[1]",
+					"name" : "switchs_export[2]",
 					"strict" : false
 				},
 				{
-					"name" : "switchs_export[2]",
+					"name" : "buttons_export_export[3]",
 					"strict" : false
 				}
 			]

@@ -5,7 +5,6 @@ module MP3_PC (
 	audio_external_BCLK,
 	audio_external_DACDAT,
 	audio_external_DACLRCK,
-	audio_pll_clk_clk,
 	buttons_export_export,
 	clk_clk,
 	hps_h2f_mpu_events_eventi,
@@ -35,6 +34,7 @@ module MP3_PC (
 	memory_mem_dm,
 	memory_oct_rzqin,
 	pll_vga_locked_export,
+	reset_reset_n,
 	seven_seg_export,
 	switchs_export,
 	vga_controller_CLK,
@@ -44,15 +44,13 @@ module MP3_PC (
 	vga_controller_SYNC,
 	vga_controller_R,
 	vga_controller_G,
-	vga_controller_B,
-	reset_reset_n);	
+	vga_controller_B);	
 
 	inout		audio_config_SDAT;
 	output		audio_config_SCLK;
 	input		audio_external_BCLK;
 	output		audio_external_DACDAT;
 	input		audio_external_DACLRCK;
-	output		audio_pll_clk_clk;
 	input	[3:0]	buttons_export_export;
 	input		clk_clk;
 	input		hps_h2f_mpu_events_eventi;
@@ -82,6 +80,7 @@ module MP3_PC (
 	output		memory_mem_dm;
 	input		memory_oct_rzqin;
 	output		pll_vga_locked_export;
+	input		reset_reset_n;
 	output	[27:0]	seven_seg_export;
 	input	[2:0]	switchs_export;
 	output		vga_controller_CLK;
@@ -92,5 +91,4 @@ module MP3_PC (
 	output	[7:0]	vga_controller_R;
 	output	[7:0]	vga_controller_G;
 	output	[7:0]	vga_controller_B;
-	input		reset_reset_n;
 endmodule

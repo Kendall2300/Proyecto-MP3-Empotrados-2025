@@ -1,0 +1,46 @@
+#include <stdint.h>
+#include <io.h>
+
+#define AUDIO_BASE 0x4860
+
+#define AUDIO_CTRL		(AUDIO_BASE + 0X00)
+#define AUDIO_STAT		(AUDIO_BASE + 0X04)
+#define AUDIO_LDATA		(AUDIO_BASE + 0X08)
+#define AUDIO_RDATA		(AUDIO_BASE + 0X0C)
+
+void delay(int loops) {
+	volatile int i;
+    for (i = 0; i < loops * 10000; i++) {
+        //retarded
+    }
+}
+
+int main() {
+    int sample_high = 0x5FFF;
+    int sample_low  = -0x5FFF;
+    int current = 0;
+
+    while (1) {
+        // Verifica si el FIFO de reproducción (bit 1) tiene espacio
+    	//alt_putstr("Antes if\n");
+    	alt_putstr("En if\n");
+    	int sample = current ? sample_high : sample_low;
+    	int sample2 = current ? sample_low : sample_high;
+    	current = !current;
+
+    	int stereo = (sample << 16) | (sample & 0xFFFF);
+    	int stereo2 = (sample2 << 16) | (sample2 & 0xFFFF);
+    	IOWR_32DIRECT(AUDIO_LDATA, 0, stereo);  // canal izquierdo
+    	IOWR_32DIRECT(AUDIO_RDATA, 0, stereo);  // canal derecho
+    	IOWR_32DIRECT(AUDIO_LDATA, 0, stereo2);  // canal izquierdo
+    	IOWR_32DIRECT(AUDIO_RDATA, 0, stereo2);  // canal derecho
+    	usleep(1000);
+
+    	IOWR_32DIRECT(AUDIO_LDATA, 0, stereo);  // canal izquierdo
+    	IOWR_32DIRECT(AUDIO_RDATA, 0, stereo);  // canal derecho
+
+    	usleep(10000);
+    }
+    return 0;
+
+}

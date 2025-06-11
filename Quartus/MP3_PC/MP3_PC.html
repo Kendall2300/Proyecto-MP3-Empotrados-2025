@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2025.06.10.10:58:13</td>
+    <td class="l">2025.06.10.16:39:21</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -1422,7 +1422,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_NIOSII">NIOSII</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="7">AudioConfig</td>
+      <td class="main" rowspan="8">AudioConfig</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_av_config_slave</td>
@@ -1431,15 +1431,21 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_CLK">CLK</a>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AudioPLL">AudioPLL</a>
       </td>
-      <td class="from">clk&#160;&#160;</td>
+      <td class="from">audio_clk&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
      </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
      <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_CLK">CLK</a>
+      </td>
       <td class="from">clk_reset&#160;&#160;</td>
      </tr>
      <tr>
@@ -1524,7 +1530,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_RATE</td>
-        <td class="parametervalue">50000000</td>
+        <td class="parametervalue">12288135</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -1557,7 +1563,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_CLK">CLK</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="4">AudioPLL</td>
+      <td class="main" rowspan="6">AudioPLL</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;ref_clk</td>
@@ -1567,6 +1573,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;ref_reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">audio_clk&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_AudioConfig">AudioConfig</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clk</td>
      </tr>
     </table>
    </div>
@@ -30443,11 +30462,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_CLOCK_DOMAIN</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">2</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_CLK_RESET_DOMAIN</td>
-        <td class="parametervalue">1</td>
+        <td class="parametervalue">2</td>
        </tr>
        <tr>
         <td class="parametername">deviceFamily</td>
@@ -33966,8 +33985,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </div>
   <table class="blueBar">
    <tr>
-    <td class="l">generation took 0.02 seconds</td>
-    <td class="r">rendering took 0.29 seconds</td>
+    <td class="l">generation took 0.03 seconds</td>
+    <td class="r">rendering took 1.27 seconds</td>
    </tr>
   </table>
  </body>
